@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "questagent"
+version = "0.0.1"
+description = "Agent that plays interactive fiction games."
+authors = [{ name = "Sergii Tykhomyrov", email = "sergii@tykhomyrov.net" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "openai>=1.82.0",
+    "textworld>=1.6.2",
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "jupyterlab>=4.4.2",
+]
+
+[project.scripts]
+questagent = "questagent.cli:main"
+
