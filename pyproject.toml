@@ -28,5 +28,5 @@ dev = [
 ]
 
 [project.scripts]
-questagent = "questagent.cli:main"
+agent = "questagent.cli:main"
 
