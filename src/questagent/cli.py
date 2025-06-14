@@ -6,9 +6,9 @@ from . import agents
 load_dotenv()
 
 def main():
-    parser = argparse.ArgumentParser(description="Quest Agent with OpenAI Reasoning")
+    parser = argparse.ArgumentParser(description="Quest Agent")
     parser.add_argument("--game", default="games/test_game.ulx", help="Game file to play")
-    parser.add_argument("--max-steps", type=int, default=50, help="Maximum number of steps")
+    parser.add_argument("--max-steps", type=int, default=25, help="Maximum number of steps")
 
     args = parser.parse_args()
 
