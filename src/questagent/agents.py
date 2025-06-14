@@ -17,7 +17,7 @@ class LangChainAgent(textworld.Agent):
             template_file="resources/instructions.mustache",
             template_format="mustache"
         )
-        self._instructions = template.format(name="QuestAgent")
+        self._instructions = template.format()
 
         self._memory = ConversationBufferMemory(return_messages=True)
 
