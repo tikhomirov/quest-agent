@@ -19,18 +19,25 @@ def play_episode(game: str, model: str, max_steps: int = 50):
     total_reward = 0
     steps = 0
 
-    while not done:
-        action = agent.act(obs, total_reward, done, infos)
+    try:
+        while not done and steps < max_steps:
+            action = agent.act(obs, total_reward, done, infos)
 
-        obs, reward, done, infos = env.step(action)
-        total_reward += reward
-        steps += 1
+            obs, reward, done, infos = env.step(action)
+            total_reward += reward
+            steps += 1
 
-        if infos.get("won", False):
-            won = True
-            break
-        elif infos.get("lost", False):
-            break
+            if "*** The End ***" in obs:
+                done = True
+                won = True
+
+            if done or infos.get("won", False):
+                won = True
+                break
+            elif infos.get("lost", False):
+                break
+    finally:
+        env.close()
 
     return won, total_reward
 
