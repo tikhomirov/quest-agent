@@ -10,11 +10,11 @@ authors = [{ name = "Sergii Tykhomyrov", email = "sergii@tykhomyrov.net" }]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "chevron>=0.14.0",
     "gym>=0.26.2",
-    "langchain[openai]>=0.3.25",
     "openai>=1.82.0",
     "python-dotenv>=1.1.0",
-    "textworld>=1.6.2",
+    "textworld[vis]>=1.6.2",
 ]
 
 [tool.setuptools]
