@@ -4,6 +4,8 @@ import textworld.gym.core
 import chevron
 import openai
 from openai import OpenAI
+import mlflow
+import logging
 
 
 def get_perform_game_action_tool():
@@ -30,6 +32,12 @@ def get_perform_game_action_tool():
 class AgentWithTools(textworld.gym.core.Agent):
     def __init__(self, model_name: str):
         super().__init__()
+
+        # Suppress MLflow autolog warnings for tool_calls validation issues
+        logging.getLogger("mlflow.openai.autolog").setLevel(logging.ERROR)
+
+        # Enable MLflow OpenAI autologging
+        mlflow.openai.autolog()
 
         self._client = OpenAI()
         self._model_name = model_name
@@ -72,7 +80,11 @@ class AgentWithTools(textworld.gym.core.Agent):
                 "tool_calls": response_message.tool_calls
             })
 
-            print(f"LLM Response: {response_message.content}")
+            if response_message.content:
+                print(f"LLM Response: {response_message.content}")
+            else:
+                print("LLM Response: [Making tool calls]")
+
             if response_message.tool_calls:
                 print(f"Tool calls: {[tc.function.name for tc in response_message.tool_calls]}")
 

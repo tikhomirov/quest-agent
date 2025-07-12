@@ -12,6 +12,7 @@ requires-python = ">=3.13"
 dependencies = [
     "chevron>=0.14.0",
     "gym>=0.26.2",
+    "mlflow[genai]>=3.1.1",
     "openai>=1.82.0",
     "python-dotenv>=1.1.0",
     "textworld[vis]>=1.6.2",

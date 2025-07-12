@@ -31,3 +31,17 @@ Once generated, run the agent with your game:
 ```bash
 uv run agent games/treasure_hunter_level5.z8 --model gpt-4o-mini
 ```
+
+## MLflow Integration
+
+Quest Agent includes MLflow integration for experiment tracking. All agent runs are automatically tracked.
+
+### View Results
+
+Start the MLflow UI to view experiment results:
+
+```bash
+uv run mlflow ui --host 0.0.0.0 --port 5000
+```
+
+Then open http://localhost:5000 in your browser.
